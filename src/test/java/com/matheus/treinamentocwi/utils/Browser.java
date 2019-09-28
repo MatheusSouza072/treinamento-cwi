@@ -17,6 +17,7 @@ public class Browser {
         if (driver == null) {
             try {
                 ChromeOptions capability = new ChromeOptions();
+                capability.addArguments("--disable-dev-shm-usage", "--no-sandbox");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
                 wait = new WebDriverWait(driver, 30);
                 maximizeBrowser();
@@ -28,19 +29,27 @@ public class Browser {
         return driver;
     }
 
-    private static void setPageLoadTimeout() {
+    public static void setPageLoadTimeout() {
         driver.manage()
                 .timeouts()
                 .pageLoadTimeout(60, TimeUnit.SECONDS);
     }
 
-    private static void maximizeBrowser() {
+    public static void maximizeBrowser() {
         driver.manage()
                 .window()
                 .maximize();
 
-
     }
+
+    public static void loadPage(String url) {
+        getCurrentWebDriver().get(url);
+    }
+
+    public static void close() {
+        getCurrentWebDriver().close();
+    }
+
 
 }
 
