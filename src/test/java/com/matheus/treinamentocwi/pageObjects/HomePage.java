@@ -13,12 +13,17 @@ public class HomePage extends BasePage {
     public WebElement titleCategoryMenu() {
         return driver.findElement(By.linkText(this.getTITLESThirts()));
 
-
     }
 
     public void clickTitleCategoryMenu() {
         titleCategoryMenu().click();
     }
+
+
+
+
+
+
 
 
 }

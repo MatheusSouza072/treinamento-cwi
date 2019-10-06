@@ -20,6 +20,9 @@ public class BasePage extends Browser {
             case "className":
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(locator)));
                 return true;
+            case "cssSelector":
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
+                return true;
         }
         return false;
     }
